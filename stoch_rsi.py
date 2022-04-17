@@ -2,8 +2,8 @@ import pandas as pd
 
 from rsi import rsi_tradingview
 
-
-def stoch_rsi_tradingview(ohlc: pd.DataFrame, period=14, smoothK=3, smoothD=3):
+#period was 14
+def stoch_rsi_tradingview(ohlc: pd.DataFrame, period=4, smoothK=3, smoothD=3):
     """ Calculating Stochastic RSI (gives the same values as TradingView as of March 20, 2021.
         smoothK = input(3, "K", minval=1)
         smoothD = input(3, "D", minval=1)

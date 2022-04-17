@@ -14,7 +14,11 @@ from binance.enums import *
 closes = []
 playon=False
 
+<<<<<<< HEAD
 SOCKET = "wss://stream.binance.com:9443/dotusdt@kline_1hr"
+=======
+SOCKET = "wss://stream.binance.com:9443/ws/dotusdt@kline_1m"
+>>>>>>> c414ff6 (updated local)
 
 # client keys and secret
 client = Client(config.API_KEY, config.API_SECRET)
@@ -24,12 +28,12 @@ margin_percentage = config.margin_percentage
 
 #Trading Setup
 
-pair,round_off = ["DOTUSDT"], [4]
+pair,round_off = ["DOTUSDT"], [5]
 
 
 def buy(symbol,quoteOrderQty):
     try:
-        print("sending order")
+        print("sending  buy order")
         order = client.order_market_buy(symbol=symbol, quoteOrderQty=quoteOrderQty)
         print(order)
     except Exception as e:
@@ -40,7 +44,7 @@ def buy(symbol,quoteOrderQty):
 
 def sell( symbol,quoteOrderQty):
     try:
-        print("sending order")
+        print("sending sell order")
         order = client.order_market_sell(symbol=symbol, quoteOrderQty=quoteOrderQty)
         print(order)
     except Exception as e:
@@ -59,9 +63,9 @@ def on_message(ws, message):
     global closes, playon
     
 
-    print('received message')
+    #print('received message')
     json_message = json.loads(message)
-    pprint.pprint(json_message)
+    #pprint.pprint(json_message)
 
     candle = json_message["k"]
 
@@ -70,13 +74,24 @@ def on_message(ws, message):
     
     if is_candle_closed:      
         closes.append(float(close))
-
-
-        src=EMA.ema(EMA.ema(closes,3))
-
+        pprint.pprint(json_message)
+        print(closes)
+        src=EMA.ema(closes,3)
+        print("src")
+        print(src)
         new_source=pd.DataFrame(src, columns=['close'])
-
+        print(new_source)
         rsi,stoch_k,stoch_d = srsi.stoch_rsi_tradingview(new_source)
+        
+
+        print("stoch_k and stoch_d",end="")
+        print(stoch_k)
+        print(stoch_d)
+        print(stoch_k.iat[-1])
+        print(stoch_d.iat[-1])
+        
+        
+        
 
         my_quote_asset = config.quote
         my_round_off = round_off[0]
@@ -93,7 +108,11 @@ def on_message(ws, message):
         
         
         # Output Console and Placing Order
+<<<<<<< HEAD
         if (stoch_k.iat[-1] < stoch_d.iat[-1)  or (abs(change_percent) > margin_percentage): 
+=======
+        if (stoch_k.iat[-1] < stoch_d.iat[-1])  or (abs(change_percent) > margin_percentage): 
+>>>>>>> c414ff6 (updated local)
             if playon:
                 sell(symbol=pair[0], quoteOrderQty=current_holding)
                 playon=False
