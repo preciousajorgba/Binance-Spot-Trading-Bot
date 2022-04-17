@@ -17,4 +17,4 @@ def ema(src, length, reset = False):
         EMA.append(sma(src, length))
     else:
         EMA.append(alpha * src[-1] + (1 - alpha) * EMA[-1])
-    return EMA[-1]
+    return EMA
