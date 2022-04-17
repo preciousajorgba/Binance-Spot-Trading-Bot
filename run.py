@@ -93,7 +93,7 @@ def on_message(ws, message):
         
         
         # Output Console and Placing Order
-        if (stoch_k < stoch_d)  or (abs(change_percent) > margin_percentage): 
+        if (stoch_k.iat[-1] < stoch_d.iat[-1)  or (abs(change_percent) > margin_percentage): 
             if playon:
                 sell(symbol=pair[0], quoteOrderQty=current_holding)
                 playon=False
@@ -106,7 +106,7 @@ def on_message(ws, message):
             else:
                  print("It is overbought, but we don't own any. Nothing to do.")
 
-        elif (stoch_k > stoch_d): 
+        elif (stoch_k.iat[-1] > stoch_d.iat[-1]): 
             if playon:
                 print("It is oversold, but you already own it, nothing to do.")
             else:
