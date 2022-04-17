@@ -14,7 +14,7 @@ from binance.enums import *
 closes = []
 playon=False
 
-SOCKET = "wss://stream.binance.com:9443//dotusdt@kline_1hr"
+SOCKET = "wss://stream.binance.com:9443/dotusdt@kline_1hr"
 
 # client keys and secret
 client = Client(config.API_KEY, config.API_SECRET)
