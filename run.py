@@ -18,7 +18,7 @@ SOCKET = "wss://stream.binance.com:9443/ws/btcusdt@kline_1h"
 api_key = config('KEY')
 api_secret = config('SECRET')
 
-client = Client(api_key, api_secret)
+client = Client(api_key, api_secret) # for US, it will be ---> client=Client(api_key,api_secret,tld='us')
 
 
 
