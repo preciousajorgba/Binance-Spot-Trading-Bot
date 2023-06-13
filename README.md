@@ -20,10 +20,12 @@ USE IT AT YOUR OWN RISK!
 
 <a name="what you need to do"></a>
 1. You need your API KEY AND SECRET.
-2. CREATE A .env file that contains your API KEY and SECRET in the following format:
-        KEY=sjjshslu7787ryfyr7y8098jhj787
-        SECRET=1ythyt7876ulguig7iujbkjh8y
-3. create a .gitinore file and add the ,env file to it
+2. CREATE A .env file that contains your API KEY and SECRET e.g           
+
+KEY=sjjshslu7787ryfyr7y8098jhj787
+SECRET=1ythyt7876ulguig7iujbkjh8y
+
+3. create a .gitinore file and add the .env file to it
 
 <a name="how_it_works"></a>
 ## HOW-IT-WORKS
